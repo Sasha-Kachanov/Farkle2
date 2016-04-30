@@ -130,42 +130,42 @@
             android:id="@+id/comb0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="combXWasClicked"
+            android:onClick="combinationButtonWasClicked"
             android:visibility="invisible"/>
 
         <Button
             android:id="@+id/comb1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="combXWasClicked"
+            android:onClick="combinationButtonWasClicked"
             android:visibility="invisible"/>
 
         <Button
             android:id="@+id/comb2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="combXWasClicked"
+            android:onClick="combinationButtonWasClicked"
             android:visibility="invisible"/>
 
         <Button
             android:id="@+id/comb3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="combXWasClicked"
+            android:onClick="combinationButtonWasClicked"
             android:visibility="invisible"/>
 
         <Button
             android:id="@+id/comb4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="combXWasClicked"
+            android:onClick="combinationButtonWasClicked"
             android:visibility="invisible"/>
 
         <Button
             android:id="@+id/comb5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="combXWasClicked"
+            android:onClick="combinationButtonWasClicked"
             android:visibility="invisible"/>
     </LinearLayout>
 

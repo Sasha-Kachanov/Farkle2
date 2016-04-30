@@ -9,7 +9,9 @@ import java.util.Arrays;
 public class Combination {
     private String name;
     private int points;
-    private Footprint footprintOfTheCombination;
+
+
+    private Footprint footprintOfTheCombination = new Footprint();
     private Integer nullInteger = new Integer(-10);
 
     public Combination() {
@@ -30,12 +32,17 @@ public class Combination {
         this.points = -1;
     }
 
-    public ArrayList<Integer> getFootprintOfTheCombination() {
+    public ArrayList<Integer> getFootprintArrayListOfTheCombination() {
         return footprintOfTheCombination.getFootprintArrayList();
     }
 
     @Override
     public String toString() {
         return name + " - " + points;
+    }
+
+    //getters and setters
+    public Footprint getFootprintOfTheCombination() {
+        return footprintOfTheCombination;
     }
 }

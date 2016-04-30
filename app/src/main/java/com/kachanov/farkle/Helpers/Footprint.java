@@ -11,7 +11,6 @@ import java.util.Arrays;
 public class Footprint {
     private static String tag = "Footprint: ";
 
-
     private ArrayList<Integer> footprintArrayList = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0));
 
     public Footprint() {
@@ -37,6 +36,39 @@ public class Footprint {
             }
         }
         printFootprintInLogcat();
+    }
+
+    public void add(Footprint footprint) {
+        for (int i = 0; i < Game.MAX_NUM_OF_DICE; i++) {
+            Integer temp;
+            temp = this.footprintArrayList.get(i) + footprint.getFootprintArrayList().get(i);
+            this.footprintArrayList.set(i, temp);
+        }
+    }
+
+    public void subtract(Footprint footprint){
+        for (int i = 0; i < Game.MAX_NUM_OF_DICE; i++) {
+            Integer temp;
+            temp = this.footprintArrayList.get(i) - footprint.getFootprintArrayList().get(i);
+            this.footprintArrayList.set(i, temp);
+        }
+    }
+
+    public boolean canAdd(Footprint footprintOfCombination, Footprint maxCapacity) {
+        Log.d(tag, "The user is currently holding: " + this.getFootprintArrayList().toString());
+        Log.d(tag, "The user is trying to add: " + footprintOfCombination
+                .getFootprintArrayList().toString());
+        Log.d(tag, "The max capacity aka the hand is: " + maxCapacity.getFootprintArrayList()
+                .toString());
+        for (int i = 0; i < Game.MAX_NUM_OF_DICE; i++) {
+            if (footprintOfCombination.getFootprintArrayList().get(i) + this.getFootprintArrayList()
+                    .get(i) > maxCapacity.getFootprintArrayList().get(i)) {
+                Log.d(tag, "Returning false - we have an overflow");
+                return false;
+            }
+        }
+        Log.d(tag, "Returning true - the user may select that combination");
+        return true;
     }
 
     //it sets all the elements of the sortedDice array to zero, must be called between rolls
