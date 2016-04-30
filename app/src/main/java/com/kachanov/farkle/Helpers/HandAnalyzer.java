@@ -65,9 +65,10 @@ public class HandAnalyzer {
 
     //it sets all the elements of the sortedDice array to zero, must be called between rolls
     private void clearHandFootprint() {
-        for (int i = 0; i < Game.MAX_NUM_OF_DICE; i++) {
-            handFootprint.set(i, 0);
-        }
+        handFootprint.clear();
+//        for (int i = 0; i < Game.MAX_NUM_OF_DICE; i++) {
+//            handFootprint.set(i, 0);
+//        }
     }
 
     //    write 6 lines outputting the footprint of the hand
