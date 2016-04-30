@@ -9,17 +9,21 @@ import java.util.ArrayList;
  */
 public class CombinationFinder {
     private int activeDice;
+    private Footprint footprintOfTheHand;
 
-    private ArrayList<Combination> availableCombinations;
+    private ArrayList<Combination> availableCombinations = new ArrayList<>();
 
     public void findAvailableCombinations(Footprint footprint) {
         activeDice = footprint.getNumOfDice();
-        clearAvailableCombinationsArray();
+        setFootprintOfTheHand(footprint);
+        testForAllDiceCombs();
+
     }
 
     private void testForAllDiceCombs() {
+        clearAvailableCombinationsArray();
         if (activeDice == 6) {
-            if (handFootprintIsEqualTo(AllCombinations.run.footprint)) {
+            if (handFootprintIsEqualTo(AllCombinations.run.getFootprintOfTheCombination())) {
                 addCombination(AllCombinations.run);
             }
             //test for three pairs should happen here i believe through an else statement
@@ -35,29 +39,28 @@ public class CombinationFinder {
         } else if (activeDice == 1) {
             testFor1DiceCombs();
         }
-        //i think you still have to add the else if test for 4 dice etc down to single
-
+        Log.d(tag, "Contents of availableCombinations:");
+        for (int i = 0; i < availableCombinations.size(); i++) {
+            Log.d(tag, availableCombinations.get(i).toString());
+        }
     }
 
-
     public void testFor6DiceCombs() {
-        //the way you could "optimize" this is by creating a method called addACombination(Combination) that calls the combs.add and populateSingleCombination
-        //6 dice combinations must match footprints of their AllCombinations.combname.footprint
-        if (handFootprintIsEqualTo(AllCombinations.sixOnes.footprint)) {
+        //6 dice combinations must match footprints of their AllCombinations.combname.getFootprintOfTheCombination()
+        if (handFootprintIsEqualTo(AllCombinations.sixOnes.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.sixOnes);
-        } else if (handFootprintIsEqualTo(AllCombinations.sixTwos.footprint)) {
+        } else if (handFootprintIsEqualTo(AllCombinations.sixTwos.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.sixTwos);
-        } else if (handFootprintIsEqualTo(AllCombinations.sixThrees.footprint)) {
+        } else if (handFootprintIsEqualTo(AllCombinations.sixThrees.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.sixThrees);
-        } else if (handFootprintIsEqualTo(AllCombinations.sixFours.footprint)) {
+        } else if (handFootprintIsEqualTo(AllCombinations.sixFours.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.sixFours);
-        } else if (handFootprintIsEqualTo(AllCombinations.sixFives.footprint)) {
+        } else if (handFootprintIsEqualTo(AllCombinations.sixFives.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.sixFives);
-        } else if (handFootprintIsEqualTo(AllCombinations.sixSixes.footprint)) {
+        } else if (handFootprintIsEqualTo(AllCombinations.sixSixes.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.sixSixes);
         }
         testFor5DiceCombs();
-
     }
 
     private void addCombination(Combination combination) {
@@ -65,34 +68,34 @@ public class CombinationFinder {
     }
 
     public void testFor5DiceCombs() {
-        if (handContainsFootprintOf(AllCombinations.fiveOnes.footprint)) {
+        if (handContainsFootprintOf(AllCombinations.fiveOnes.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.fiveOnes);
-        } else if (handContainsFootprintOf(AllCombinations.fiveTwos.footprint)) {
+        } else if (handContainsFootprintOf(AllCombinations.fiveTwos.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.fiveTwos);
-        } else if (handContainsFootprintOf(AllCombinations.fiveThrees.footprint)) {
+        } else if (handContainsFootprintOf(AllCombinations.fiveThrees.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.fiveThrees);
-        } else if (handContainsFootprintOf(AllCombinations.fiveFours.footprint)) {
+        } else if (handContainsFootprintOf(AllCombinations.fiveFours.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.fiveFours);
-        } else if (handContainsFootprintOf(AllCombinations.fiveFives.footprint)) {
+        } else if (handContainsFootprintOf(AllCombinations.fiveFives.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.fiveFives);
-        } else if (handContainsFootprintOf(AllCombinations.fiveSixes.footprint)) {
+        } else if (handContainsFootprintOf(AllCombinations.fiveSixes.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.fiveSixes);
         }
         testFor4DiceCombs();
     }
 
     public void testFor4DiceCombs() {
-        if (handContainsFootprintOf(AllCombinations.fourOnes.footprint)) {
+        if (handContainsFootprintOf(AllCombinations.fourOnes.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.fourOnes);
-        } else if (handContainsFootprintOf(AllCombinations.fourTwos.footprint)) {
+        } else if (handContainsFootprintOf(AllCombinations.fourTwos.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.fourTwos);
-        } else if (handContainsFootprintOf(AllCombinations.fourThrees.footprint)) {
+        } else if (handContainsFootprintOf(AllCombinations.fourThrees.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.fourThrees);
-        } else if (handContainsFootprintOf(AllCombinations.fourFours.footprint)) {
+        } else if (handContainsFootprintOf(AllCombinations.fourFours.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.fourFours);
-        } else if (handContainsFootprintOf(AllCombinations.fourFives.footprint)) {
+        } else if (handContainsFootprintOf(AllCombinations.fourFives.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.fourFives);
-        } else if (handContainsFootprintOf(AllCombinations.fourSixes.footprint)) {
+        } else if (handContainsFootprintOf(AllCombinations.fourSixes.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.fourSixes);
         }
         testFor3DiceCombs();
@@ -100,62 +103,63 @@ public class CombinationFinder {
 
     public void testFor3DiceCombs() {
         //note that the logic is different because you can have more than one
-        if (handContainsFootprintOf(AllCombinations.threeOnes.footprint)) {
+        if (handContainsFootprintOf(AllCombinations.threeOnes.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.threeOnes);
         }
-        if (handContainsFootprintOf(AllCombinations.threeTwos.footprint)) {
+        if (handContainsFootprintOf(AllCombinations.threeTwos.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.threeTwos);
         }
-        if (handContainsFootprintOf(AllCombinations.threeThrees.footprint)) {
+        if (handContainsFootprintOf(AllCombinations.threeThrees.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.threeThrees);
         }
-        if (handContainsFootprintOf(AllCombinations.threeFours.footprint)) {
+        if (handContainsFootprintOf(AllCombinations.threeFours.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.threeFours);
         }
-        if (handContainsFootprintOf(AllCombinations.threeFives.footprint)) {
+        if (handContainsFootprintOf(AllCombinations.threeFives.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.threeFives);
         }
-        if (handContainsFootprintOf(AllCombinations.threeSixes.footprint)) {
+        if (handContainsFootprintOf(AllCombinations.threeSixes.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.threeSixes);
         }
         testFor2DiceCombs();
     }
 
     public void testFor2DiceCombs() {
-        if (handContainsFootprintOf(AllCombinations.twoOnes.footprint)) {
+        if (handContainsFootprintOf(AllCombinations.twoOnes.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.twoOnes);
         }
-        if (handContainsFootprintOf(AllCombinations.twoFives.footprint)) {
+        if (handContainsFootprintOf(AllCombinations.twoFives.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.twoFives);
         }
         testFor1DiceCombs();
     }
 
     public void testFor1DiceCombs() {
-        // i need a contains method. the footprint will add up to 6 dice. but does it contain a a single one??? i can't use equals to 0 1 0 0  0 0 0..
-        if (handContainsFootprintOf(AllCombinations.singleOne.footprint)) {
+        if (handContainsFootprintOf(AllCombinations.singleOne.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.singleOne);
         }
-        if (handContainsFootprintOf(AllCombinations.singleFive.footprint)) {
+        if (handContainsFootprintOf(AllCombinations.singleFive.getFootprintOfTheCombination())) {
             addCombination(AllCombinations.singleFive);
         }
     }
 
-    public boolean handFootprintIsEqualTo(ArrayList<Integer> footprint) {
-        if (handFootprint.equals(footprint)) {
-            Log.d(tag, "The hand contains/is: " + footprint);
+    public boolean handFootprintIsEqualTo(ArrayList<Integer> footprintOfACombination) {
+        Log.d(tag, "Comparing the footprintOfTheHand of " + this.footprintOfTheHand.getFootprintArrayList().toString() + " " +
+                "to " + footprintOfACombination.toString());
+        if (this.footprintOfTheHand.equals(footprintOfACombination)) {
+            Log.d(tag, "The hand contains/is: " + footprintOfACombination);
             return true;
         }
         return false;
     }
 
-    public boolean handContainsFootprintOf(ArrayList<Integer> footprint) {
-        Log.d(tag, "Comparing the footprint of " + handFootprint.toString() + " to " + footprint
-                .toString());
+    public boolean handContainsFootprintOf(ArrayList<Integer> footprintOfACombination) {
+        Log.d(tag, "Comparing the footprintOfTheHand of " + this.footprintOfTheHand.getFootprintArrayList().toString() + " " +
+                "to " + footprintOfACombination.toString());
         //look at 1 thru 6 indexes
         for (int i = 0; i < Game.MAX_NUM_OF_DICE; i++) {
-            if (footprint.get(i) != 0 && handFootprint.get(i) >= footprint.get(i)) {
-                Log.d(tag, "The hand contains the footprint of: " + footprint);
+            if (footprintOfACombination.get(i) != 0 && this.footprintOfTheHand.getFootprintArrayList().get(i) >= footprintOfACombination.get(i)) {
+                Log.d(tag, "The hand contains the footprintOfTheHand of: " + footprintOfACombination);
                 return true;
             }
         }
@@ -175,6 +179,10 @@ public class CombinationFinder {
         return availableCombinations;
     }
 
-
     private static String tag = "CombinationFinder: ";
+
+    //setters
+    private void setFootprintOfTheHand(Footprint footprintOfTheHand) {
+        this.footprintOfTheHand = footprintOfTheHand;
+    }
 }

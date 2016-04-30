@@ -79,10 +79,6 @@ public class RollHandler {
 
 
 
-
-
-
-
 //
 //
 //
@@ -102,6 +98,7 @@ public class RollHandler {
     //writes 6 lines representing the back end array
     private void printDiceArrayListInLogcat() {
         printLine();
+        Log.d(tag, "BELOW IS diceArrayList, i.e., RAW HAND THAT WAS ROLLED");
         for (int i = 0; i < 6; i++) {
             Log.d(tag, "dice[" + i + "] == " + diceArrayList.get(i).getValue() + "," +
                     " isUsed == " + diceArrayList.get(i).isUsed() + ", isSelected == " +

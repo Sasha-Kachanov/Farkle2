@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.kachanov.farkle.MainActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context="com.kachanov.farkle.MainActivity">
 
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/diceLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -25,51 +25,46 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_weight="1"
-            android:src="@drawable/dice1"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <ImageView
             android:id="@+id/dice1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/dice2"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <ImageView
             android:id="@+id/dice2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/dice3"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <ImageView
             android:id="@+id/dice3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/dice4"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <ImageView
             android:id="@+id/dice4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/dice5"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <ImageView
             android:id="@+id/dice5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/dice6"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/banksLinearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -81,14 +76,15 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bank:" />
+            android:text="Bank:"/>
 
         <TextView
             android:id="@+id/bankTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="New Text" />
+            android:visibility="visible"
+            />
 
         <Button
             android:id="@+id/rollButton"
@@ -96,31 +92,33 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:onClick="roll"
-            android:text="ROLL" />
+            android:text="ROLL"/>
 
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:phoneNumber="true"
-            android:text="Temp bank" />
+            android:text="Temporary bank:"/>
 
         <TextView
             android:id="@+id/tempBankTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="New Text" />
+            android:visibility="visible"
+            />
 
         <Button
             android:id="@+id/bankButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bank" />
+            android:layout_gravity="right"
+            android:text="Bank"/>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/combinationsLinearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -133,42 +131,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="combXWasClicked"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/comb1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="combXWasClicked"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/comb2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="combXWasClicked"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/comb3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="combXWasClicked"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/comb4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="combXWasClicked"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/comb5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="combXWasClicked"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
     </LinearLayout>
 
 </RelativeLayout>

@@ -10,22 +10,30 @@ import java.util.Arrays;
  */
 public class Footprint {
     private static String tag = "Footprint: ";
-    private ArrayList<Integer> footprint = new ArrayList<>(Arrays.asList(new Integer(0), new Integer
-            (0), new Integer(0), new Integer(0), new Integer(0), new Integer(0)));
+
+
+    private ArrayList<Integer> footprintArrayList = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0));
+
+    public Footprint() {
+    }
+
+    public Footprint(ArrayList<Integer> footprintArrayList) {
+        this.footprintArrayList = footprintArrayList;
+    }
 
     public void generateFootprint(ArrayList<Die> hand) {
-//        clearFootprint();
+        clearFootprint();
 
-        //if the dice is used (not unused) add it to the footprint
+        //if the dice is used (not unused) add it to the footprintArrayList
         for (int i = 0; i < Game.MAX_NUM_OF_DICE; i++) {
             if (hand.get(i).isUsed()) {
                 int valueOfDie = hand.get(i).getValue();
                 //retrieve how many of those dice (ones, two,..) we already have
-                int newVal = footprint.get(valueOfDie - 1);
+                int newVal = footprintArrayList.get(valueOfDie - 1);
                 //update that value
                 newVal++;
                 //store the new amount of ones, twos, ... back in the array
-                footprint.set(valueOfDie - 1, newVal);
+                footprintArrayList.set(valueOfDie - 1, newVal);
             }
         }
         printFootprintInLogcat();
@@ -36,31 +44,41 @@ public class Footprint {
     // objects here
     private void clearFootprint() {
         for (int i = 0; i < Game.MAX_NUM_OF_DICE; i++) {
-            footprint.set(i, 0);
+            footprintArrayList.set(i, 0);
         }
     }
 
     public int getNumOfDice() {
         int numOfDiceInTheFootprint = 0;
         for (int i = 0; i < Game.MAX_NUM_OF_DICE; i++) {
-            numOfDiceInTheFootprint += footprint.get(i);
+            numOfDiceInTheFootprint += footprintArrayList.get(i);
         }
-        Log.d(tag, "The number of dice in this footprint is " + numOfDiceInTheFootprint);
+        Log.d(tag, "The number of dice in this footprintArrayList is " + numOfDiceInTheFootprint);
         return numOfDiceInTheFootprint;
     }
 
 
-    //    write 6 lines outputting the footprint of the hand
+    //    write 6 lines outputting the footprintArrayList of the hand
     private void printFootprintInLogcat() {
         //this simply shows the developer what is stored in the sorted dies array.
         printLine();
+        Log.d(tag, "BELOW IS THE FOOTPRINT OF THE HAND THAT WAS ROLLED");
         for (int i = 0; i < Game.MAX_NUM_OF_DICE; i++) {
-            Log.d(tag, "The number of " + (i + 1) + "s in the hand is " + footprint.get(i));
+            Log.d(tag, "The number of " + (i + 1) + "s in the hand is " + footprintArrayList.get(i));
         }
         printLine();
     }
 
     private void printLine() {
         Log.d(tag, "--------------------------------------------------------");
+    }
+
+    //setters
+    public void setFootprintOfTheCombination(ArrayList<Integer> footprint) {
+        this.footprintArrayList = footprint;
+    }
+
+    public ArrayList<Integer> getFootprintArrayList() {
+        return footprintArrayList;
     }
 }

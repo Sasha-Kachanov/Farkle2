@@ -7,28 +7,35 @@ import java.util.Arrays;
  * Created by Mac on 3/9/16.
  */
 public class Combination {
-    public String name;
-    public int points;
-    public ArrayList<Integer> footprint = new ArrayList<>((Arrays.asList(new Integer(0), new Integer(0), new Integer(0), new Integer(0), new Integer(0), new Integer(0))));
-    public Integer nullInteger = new Integer(-10);
+    private String name;
+    private int points;
+    private Footprint footprintOfTheCombination;
+    private Integer nullInteger = new Integer(-10);
 
     public Combination() {
         clearAllFields();
     }
 
-    public Combination(String name, int points, ArrayList<Integer> footprint) {
+    public Combination(String name, int points, Footprint footprintOfTheCombination) {
         this.name = name;
         this.points = points;
-        this.footprint = footprint;
+        this.footprintOfTheCombination = footprintOfTheCombination;
     }
 
     //i need this method to reinitialize the combs array that holds availble combinations
-    public void clearAllFields() {
+    private void clearAllFields() {
 
-        for (int i = 0; i < 6; i++) {
-            this.footprint.set(i, nullInteger);
-        }
+        this.footprintOfTheCombination.setFootprintOfTheCombination(new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0)));
         this.name = "empty";
         this.points = -1;
+    }
+
+    public ArrayList<Integer> getFootprintOfTheCombination() {
+        return footprintOfTheCombination.getFootprintArrayList();
+    }
+
+    @Override
+    public String toString() {
+        return name + " - " + points;
     }
 }

@@ -11,7 +11,6 @@ import java.util.ArrayList;
  */
 public class HandAnalyzer {
     private Footprint footprint = new Footprint();
-
     private CombinationFinder combFinder = new CombinationFinder();
 
     public void analyze(ArrayList<Die> hand) {
@@ -22,5 +21,7 @@ public class HandAnalyzer {
     private static String tag = "HandAnalyzer: ";
 
     //getters
-
+    public CombinationFinder getCombFinder() {
+        return combFinder;
+    }
 }
