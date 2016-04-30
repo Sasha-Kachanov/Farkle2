@@ -15,6 +15,16 @@ import com.kachanov.farkle.Helpers.Die;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private static int activeDice=6;
+
+    public static int getActiveDice() {
+        return activeDice;
+    }
+
+    public static void setActiveDice(int activeDice) {
+        MainActivity.activeDice = activeDice;
+    }
+
     //this object will handle everything when roll is pressed
     RollHandler rollHandler = new RollHandler();
 
@@ -36,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initializeAllViews();
         populateDrawableDiceArrayListWithPics();
+
     }
 
     //this gets invoked when the roll button get's pressed
@@ -47,9 +58,7 @@ public class MainActivity extends AppCompatActivity {
         rollHandler.handle();
         displayDice(rollHandler.getDiceArrayList());
 
-
-
-        displayCombinations(rollHandler.getAnalyzer().getAvailableCombinations());
+        displayCombinations(rollHandler.getAnalyzer().getCombinationFinder().getAvailableCombinations());
     }
 
     //all that it does is displayDice the proper image based on the value of the die
@@ -63,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void displayCombinations(ArrayList<Combination> combinations){
+    private void displayCombinations(ArrayList<Combination> combinations) {
         hideAllCombinations();
 
     }
