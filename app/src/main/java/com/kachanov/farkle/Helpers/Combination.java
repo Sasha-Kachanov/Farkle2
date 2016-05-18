@@ -9,10 +9,7 @@ import java.util.Arrays;
 public class Combination {
     private String name;
     private int points;
-
-
     private Footprint footprintOfTheCombination = new Footprint();
-    private Integer nullInteger = new Integer(-10);
 
     public Combination() {
         clearAllFields();
@@ -44,5 +41,13 @@ public class Combination {
     //getters and setters
     public Footprint getFootprintOfTheCombination() {
         return footprintOfTheCombination;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public String getName() {
+        return name;
     }
 }

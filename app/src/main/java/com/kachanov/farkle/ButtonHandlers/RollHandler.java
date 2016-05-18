@@ -31,8 +31,9 @@ public class RollHandler {
         this.mContext = context;
     }
 
-
     private HandAnalyzer analyzer = new HandAnalyzer();
+
+    private boolean firstRoll = true;
 
     public HandAnalyzer getAnalyzer() {
         return analyzer;
@@ -51,6 +52,9 @@ public class RollHandler {
     public void handle() {
         //need to test if rolling is legal, if not display toast and end function with a return I suppose
         if (legalToRoll()) {
+            numberOfSelectedCombinations = 0;
+            //reset the backend combinations and all the dice stuff
+            analyzer.getCombFinder().printAvailableCombinations();
 
             //back end rolling - rolls every dice object in the diceArrayList which populates the value
             // field of each dice with a random number from 1 to 6
@@ -62,13 +66,33 @@ public class RollHandler {
         }
     }
 
-    private boolean legalToRoll() {
-        if (true) {
-            return true;
+    private Integer numberOfSelectedCombinations;
 
+    public void setNumberOfSelectedCombinations(Integer numberOfSelectedCombinations) {
+        this.numberOfSelectedCombinations = numberOfSelectedCombinations;
+        Log.d(tag, "The number of selected combinations is: " + this.numberOfSelectedCombinations);
+    }
+
+    private boolean legalToRoll() {
+        String tag = "zhopa";
+        Log.d(tag, "IT IS A FREE ROLL: " + isFreeRoll());
+        Log.d(tag, "IT IS A FIRST ROLL: " + isFirstRoll());
+        if (numberOfSelectedCombinations != null) {
+            Log.d(tag, "NUMBEROFSELECTEDCOMINATIONS IS > 0 " + (numberOfSelectedCombinations > 0));
+            Log.d(tag, "NUMBEROFSELECTEDCOMINATIONS IS: " + (numberOfSelectedCombinations));
+        }
+        if (isFreeRoll()) {
+            numberOfSelectedCombinations = 0;
+            return true;
+        } else if (isFirstRoll()) {
+            numberOfSelectedCombinations = 0;
+            firstRoll = false;
+            return true;
+        } else if (numberOfSelectedCombinations > 0) {
+            numberOfSelectedCombinations = 0;
+            return true;
         } else {
-            CharSequence text = "You must have at least 300 points and at least one combination " +
-                    "selected to be able to roll!";
+            CharSequence text = "You must select at least one combination to be able to roll!";
             int duration = Toast.LENGTH_SHORT;
 
             Toast toast = Toast.makeText(mContext, text, duration);
@@ -77,14 +101,33 @@ public class RollHandler {
         }
     }
 
+    public boolean isFreeRoll() {
+        int count = 0;
+        for (int i = 0; i < Game.MAX_NUM_OF_DICE; i++) {
+            if (diceArrayList.get(i).isSelected()) {
+                count++;
+            }
+        }
+        if (count == 6) {
+
+            Log.d(tag, "FREE ROLL");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void resetThingsForFreeRoll() {
+        for (int i = 0; i < Game.MAX_NUM_OF_DICE; i++) {
+            diceArrayList.get(i).setSelected(false);
+            diceArrayList.get(i).setUsed(true);
+        }
+    }
 
 
-//
-//
-//
-//    //populates the diceArrayList with random numbers
-//    //more specifically it checks if the die is still used, and if it is not isSelected, then it
-//    // rolls it.
+    //populates the diceArrayList with random numbers
+    //more specifically it checks if the die is still used, and if it is not isSelected, then it
+    // rolls it.
     private void populateDiceArrayListWithRands() {
         for (int i = 0; i < 6; i++) {
             if (diceArrayList.get(i).isUsed() && !diceArrayList.get(i).isSelected()) {
@@ -112,48 +155,11 @@ public class RollHandler {
         Log.d(tag, "--------------------------------------------------------");
     }
 
-    //
-//
-//
-//
-//
-//
-//
-//
-//    //// FIXME: 3/16/16 not even close to being done
-//    private void populateDicesWithRun() {
-//        for (int i = 0; i < 6; i++) {
-//            dices.get(i).value = i + 1;
-//        }
-//    }
-//
-//    private void populateSingleCombinationButton(Combination comb) {
-//        Button button = (Button) findViewById(getNextInvisibleButton());
-//        String text;
-//        text = comb.name + " - " + comb.points;
-//        button.setText(text);
-//        button.setVisibility(View.VISIBLE);
-//    }
-//
-//    private int getNextInvisibleButton() {
-//        if (comb0Button.getVisibility() == View.INVISIBLE) {
-//            return R.id.comb0;
-//        } else if (comb1Button.getVisibility() == View.INVISIBLE) {
-//            return R.id.comb1;
-//        } else if (comb2Button.getVisibility() == View.INVISIBLE) {
-//            return R.id.comb2;
-//        } else if (comb3Button.getVisibility() == View.INVISIBLE) {
-//            return R.id.comb3;
-//        } else if (comb4Button.getVisibility() == View.INVISIBLE) {
-//            return R.id.comb4;
-//        }
-//        Log.d(tag, "If this message gets displayed then you are in big trouble, terrible logic error");
-//        return 0;
-//    }
-//
-//    //okay so it takes combs array and for each combination (there are 5 of them) it resets their values to defaults
+    public boolean isFirstRoll() {
+        return firstRoll;
+    }
 
-//    //handling of the roll button ends here
-//
-
+    public void setFirstRoll(boolean firstRoll) {
+        this.firstRoll = firstRoll;
+    }
 }

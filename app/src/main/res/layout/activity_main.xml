@@ -79,11 +79,12 @@
             android:text="Bank:"/>
 
         <TextView
-            android:id="@+id/bankTextView"
+            android:id="@+id/permBankTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:visibility="visible"
+            android:text="0"
             />
 
         <Button
@@ -107,6 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:visibility="visible"
+            android:text="0"
             />
 
         <Button
@@ -114,7 +116,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:onClick="bank"
             android:text="Bank"/>
+        <TextView
+            android:id="@+id/turnNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Turn #1"
+            />
+        <TextView
+            android:id="@+id/goalTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -125,6 +139,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Available combinations:"/>
 
         <Button
             android:id="@+id/comb0"

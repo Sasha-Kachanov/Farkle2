@@ -8,6 +8,9 @@ import android.widget.Button;
 public class CombinationButton {
     private Button button;
 
+    //i am not really using this combination anywhere but i should
+    private Combination combination;
+
     public CombinationButton(Button button) {
         this.button = button;
         selected = false;
@@ -15,6 +18,7 @@ public class CombinationButton {
 
     private boolean selected;
 
+    //getters and setters
     public boolean isSelected() {
         return selected;
     }
@@ -31,5 +35,12 @@ public class CombinationButton {
         this.button = button;
     }
 
+    public Combination getCombination() {
+        return combination;
+    }
+
+    public void setCombination(Combination combination) {
+        this.combination = combination;
+    }
 
 }

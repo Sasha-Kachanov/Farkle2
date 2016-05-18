@@ -17,7 +17,13 @@ public class CombinationFinder {
         activeDice = footprint.getNumOfDice();
         footprintOfTheHand = footprint;
         testForAllDiceCombs();
+    }
 
+    public void printAvailableCombinations() {
+        Log.d(tag, "Printing available combinations just in case:");
+        for (int i = 0; i < availableCombinations.size(); i++) {
+            Log.d(tag, "Printing: " + availableCombinations.get(i).toString());
+        }
     }
 
     private void testForAllDiceCombs() {
@@ -39,7 +45,12 @@ public class CombinationFinder {
         } else if (activeDice == 1) {
             testFor1DiceCombs();
         }
-        Log.d(tag, "Contents of availableCombinations:");
+
+        if (activeDice == 6 && availableCombinations.size() == 0){
+            availableCombinations.add(AllCombinations.nothing);
+        }
+
+            Log.d(tag, "Contents of availableCombinations:");
         for (int i = 0; i < availableCombinations.size(); i++) {
             Log.d(tag, availableCombinations.get(i).toString());
         }
